@@ -4,8 +4,8 @@ import './CountryCard.css';
 const CountryCard = ({ country }) => {
   return (
     <div className="countryCard">
-      <img src={country.png} alt={country.common} />
-      <p>{country.common}</p>
+      <img src={country.flag} alt={country.name} />
+      <p>{country.name}</p>
     </div>
   );
 };

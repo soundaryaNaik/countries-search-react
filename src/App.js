@@ -11,9 +11,16 @@ const App = () => {
     try {
       const response = await fetch('https://countries-search-data-prod-812920491762.asia-south1.run.app/countries');
       const data = await response.json();
-      console.log('Fetched countries:', data);
-      setCountries(data);
-      setFiltered(data);
+
+      // ✅ Transform structure to match test expectations
+      const transformed = data.map((item) => ({
+        name: item.common,
+        flag: item.png
+      }));
+
+      console.log('Transformed countries:', transformed);
+      setCountries(transformed);
+      setFiltered(transformed);
     } catch (err) {
       console.error("Error fetching countries:", err);
     }
@@ -27,9 +34,9 @@ const App = () => {
     const q = query.toLowerCase();
     const result = countries.filter(
       (country) =>
-        country.common &&
-        country.png &&
-        country.common.toLowerCase().includes(q)
+        country.name &&
+        country.flag &&
+        country.name.toLowerCase().includes(q)
     );
     setFiltered(result);
   }, [query, countries]);
@@ -47,7 +54,7 @@ const App = () => {
           <p>No countries to display.</p>
         ) : (
           filtered.map((country) => (
-            <CountryCard key={country.common} country={country} />
+            <CountryCard key={country.name} country={country} />
           ))
         )}
       </div>
