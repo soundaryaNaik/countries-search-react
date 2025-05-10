@@ -12,17 +12,17 @@ const App = () => {
       const response = await fetch('https://countries-search-data-prod-812920491762.asia-south1.run.app/countries');
       const data = await response.json();
 
-      // ✅ Transform structure to match test expectations
+      // ✅ Transform to match test structure
       const transformed = data.map((item) => ({
         name: item.common,
-        flag: item.png
+        flag: item.png,
       }));
 
-      console.log('Transformed countries:', transformed);
+      console.log('Fetched countries:', transformed);
       setCountries(transformed);
       setFiltered(transformed);
     } catch (err) {
-      console.error("Error fetching countries:", err);
+      console.error('Error fetching countries:', err);
     }
   };
 
