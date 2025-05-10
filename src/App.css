@@ -1,0 +1,17 @@
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.countriesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
